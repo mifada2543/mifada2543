@@ -1,16 +1,18 @@
-## Hi there 👋
+## My Portfolio
 
-<!--
-**mifada2543/mifada2543** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Hi, I'm **Mifada** 👋  
+Welcome to my GitHub profile.
 
-Here are some ideas to get you started:
+### About Me
+- 💻 I build web and software projects.
+- 🌱 I keep learning and improving my development skills.
+- 🤝 I’m open to collaboration on interesting projects.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### Projects
+- Add your featured projects here with short descriptions and links.
+
+### Skills
+- Add your main technologies, tools, and frameworks here.
+
+### Contact
+- 📫 Add your preferred contact links (email, LinkedIn, portfolio website).
