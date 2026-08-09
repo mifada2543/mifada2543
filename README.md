@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/GitHub-mifada2543-181717?style=for-the-badge&logo=github&logoColor=white" />
 </a>
 
-<br/><br/>
+<br/>
 
 <img src="https://komarev.com/ghpvc/?username=mifada2543&style=for-the-badge&color=58A6FF&label=PROFILE+VIEWS" />
 <img src="https://img.shields.io/github/followers/mifada2543?style=for-the-badge&color=58A6FF&labelColor=1e293b&label=FOLLOWERS" />
