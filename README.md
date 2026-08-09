@@ -55,11 +55,6 @@
 ### 📊 Statistik GitHub
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats-git-masterrst-anuraghazra.vercel.app/api?username=mifada2543&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" />
-  <img height="165" src="https://github-readme-stats-git-masterrst-anuraghazra.vercel.app/api/top-langs/?username=mifada2543&layout=compact&theme=tokyonight&hide_border=true" />
-</p>
-
-<p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=mifada2543&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </p>
 
