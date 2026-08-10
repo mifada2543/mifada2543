@@ -4,3 +4,6 @@ skills-lock.json
 style.css
 script.js
 portfolio-data.js
+
+# build script lokal (untuk rebuild .min saja)
+build.sh
