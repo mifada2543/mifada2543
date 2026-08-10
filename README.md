@@ -1,5 +1,4 @@
 <div align="center">
-
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1e2327&height=200&section=header&text=Daffa%20%E2%80%A2%20mifada2543&fontSize=38&fontColor=ffffff&fontAlignY=38&desc=Pelajar%20dan%20Pemula%20%E2%80%A2%20Web%20Developer%20%E2%80%A2%20AI%20Enthusiast&descAlignY=58&descSize=16&descColor=e0f2fe" />
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Belajar+Membangun+Aplikasi+Web+%F0%9F%9A%80;Ngoprek+PHP%2C+Python%2C+dan+AI+%F0%9F%A4%96;Suka+Bikin+Proyek+dari+Nol+%F0%9F%92%A1;Terbuka+untuk+Kolaborasi+%F0%9F%A4%9D" alt="Typing SVG" />
@@ -27,16 +26,16 @@
 
 ## 👋 Tentang Aku
 
-> *"Masih belajar, tapi berani nyoba bangun sesuatu dari nol."*
+> _"Masih belajar, tapi berani nyoba bangun sesuatu dari nol."_
 
 Aku **pelajar dan pemula** yang lagi seru-serunya belajar membangun aplikasi web dan proyek berbasis AI. Mulai dari media hub pribadi, asisten AI sederhana, sampai gateway WebView — semuanya aku pelajari sambil jalan lewat proyek nyata.
 
 ```yaml
-Nama       : Mifada
-Peran      : Pelajar & Pemula di Dunia Coding
-Fokus      : PHP · Laravel-style Projects · Python · AI Integration
-Sedang     : Belajar membangun & merapikan proyek-proyek open source
-Ikuti Aku  : YouTube @mifada2543
+Nama: Mifada
+Peran: Pelajar & Pemula di Dunia Coding
+Fokus: PHP · Laravel-style Projects · Python · AI Integration
+Sedang: Belajar membangun & merapikan proyek-proyek open source
+Ikuti Aku: YouTube @mifada2543
 ```
 
 ---
@@ -46,12 +45,15 @@ Ikuti Aku  : YouTube @mifada2543
 <div align="center">
 
 ### ⚙️ Backend
+
 <img height="40" src="https://skillicons.dev/icons?i=php,python,mysql,sqlite"/>
 
 ### 🎨 Frontend
+
 <img height="40" src="https://skillicons.dev/icons?i=html,css,js,tailwind"/>
 
 ### 🧰 Tools
+
 <img height="40" src="https://skillicons.dev/icons?i=github,git,vscode"/>
 
 </div>
@@ -63,7 +65,7 @@ Ikuti Aku  : YouTube @mifada2543
 <table>
   <tr>
     <td width="50%">
-      <h3>📺 MEeL-HUB</h3>
+      <h3><img src="./MEeL.png" width="20px" height="20px"> MEeL-HUB</h3>
       <p>Media hub pribadi all-in-one berbasis PHP & MySQL — streaming video (HLS), musik lossless, buku digital, dan cloud drive. Dilengkapi transcoding FFmpeg, integrasi yt-dlp, serta mini-game arcade.</p>
       <p>
         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
