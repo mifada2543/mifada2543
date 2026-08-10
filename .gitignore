@@ -1,2 +1,6 @@
 .agents
 skills-lock.json
+# file sumber (jangan di-push ke GitHub — hanya versi .min yang di-deploy)
+style.css
+script.js
+portfolio-data.js

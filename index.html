@@ -13,8 +13,9 @@
   <link rel="icon" href="MEeL.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="style.min.css" />
 </head>
 
 <body>
@@ -49,7 +50,7 @@
       </div>
 
       <div class="nav__right">
-        <button id="lang-btn" class="lang-btn" aria-label="Switch language">EN</button>
+        <button id="lang-btn" class="lang-btn" aria-label="EN — switch language">EN</button>
         <a href="#contact" class="btn btn--sm btn--primary nav__cta" data-i18n="nav.cta">Hubungi saya</a>
         <button id="mobile-btn" class="nav__toggle" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg id="menu-icon-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -85,7 +86,7 @@
           <span data-i18n="nav.contact">Kontak</span>
         </a>
         <div class="nav__mobile-lang">
-          <button id="lang-btn-mobile" class="lang-btn" aria-label="Switch language">EN</button>
+          <button id="lang-btn-mobile" class="lang-btn" aria-label="EN — switch language">EN</button>
         </div>
       </div>
     </div>
@@ -102,7 +103,7 @@
         </p>
 
         <h1 class="hero__title reveal">
-          <span class="hero-outline" style="display:block;font-size:0.5em;font-style:italic;font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(234,242,239,0.16)">mifada2543</span>
+          <span class="hero-outline" aria-hidden="true" style="display:block;font-size:0.5em;font-style:italic;font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(234,242,239,0.55)">mifada2543</span>
           <span class="accent" data-i18n="hero.name1">MUHAMMAD</span><br />
           <span data-i18n="hero.name2">DAFFA</span>
         </h1>
@@ -275,7 +276,7 @@
     <p data-i18n="footer">© 2026 Muhammad Daffa · dibangun sambil belajar, satu commit pada satu waktu.</p>
   </footer>
 
-  <script src="portfolio-data.js"></script>
-  <script src="script.js"></script>
+  <script src="portfolio-data.min.js"></script>
+  <script src="script.min.js"></script>
 </body>
 </html>
