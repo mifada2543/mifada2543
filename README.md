@@ -1,7 +1,5 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1e2327&height=200&section=header&text=Daffa%20%E2%80%A2%20mifada2543&fontSize=38&fontColor=ffffff&fontAlignY=38&desc=Pelajar%20dan%20Pemula%20%E2%80%A2%20Web%20Developer%20%E2%80%A2%20AI%20Enthusiast&descAlignY=58&descSize=16&descColor=e0f2fe" />
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Belajar+Membangun+Aplikasi+Web+%F0%9F%9A%80;Ngoprek+PHP%2C+Python%2C+dan+AI+%F0%9F%A4%96;Suka+Bikin+Proyek+dari+Nol+%F0%9F%92%A1;Terbuka+untuk+Kolaborasi+%F0%9F%A4%9D" alt="Typing SVG" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1e2327&height=200&section=header&text=Daffa%20%E2%80%A2%20mifada2543&fontSize=38&fontColor=ffffff&fontAlignY=38&desc=Web%20Developer%20%E2%80%A2%20AI%20Enthusiast%20%E2%80%A2%20Media%20Systems%20Builder&descAlignY=58&descSize=16&descColor=e0f2fe" />  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Building+Media+Systems+%F0%9F%9A%80;PHP+%C2%B7+FFmpeg+%C2%B7+MySQL+%C2%B7+AI+%F0%9F%A4%96;Shipping+Real+Projects+from+Scratch+%F0%9F%92%A1;Open+to+Collaboration+%F0%9F%A4%9D" alt="Typing SVG" />
 
 <br/>
 
@@ -26,15 +24,15 @@
 
 ## 👋 Tentang Aku
 
-> _"Masih belajar, tapi berani nyoba bangun sesuatu dari nol."_
+> _"Cara terbaik belajar adalah dengan membangun sesuatu yang beneran dipakai. — dan itulah yang kulakukan."_
 
-Aku **pelajar dan pemula** yang lagi seru-serunya belajar membangun aplikasi web dan proyek berbasis AI. Mulai dari media hub pribadi, asisten AI sederhana, sampai gateway WebView — semuanya aku pelajari sambil jalan lewat proyek nyata.
+Aku **web developer & AI enthusiast** yang aktif membangun sistem dari nol — media hub dengan HLS streaming, FFmpeg transcoding pipeline, cloud drive, admin panel, sampai proyek AI. Semua dibangun lewat proyek nyata, bukan cuma tutorial.
 
 ```yaml
 Nama: Mifada
-Peran: Pelajar & Pemula di Dunia Coding
-Fokus: PHP · Laravel-style Projects · Python · AI Integration
-Sedang: Belajar membangun & merapikan proyek-proyek open source
+Peran: Web Developer & AI Enthusiast
+Fokus: PHP · Laravel-style Architecture · FFmpeg · MySQL · AI Integration
+Sedang: Mengembangkan MEeL-HUB & merilis ke publik
 Ikuti Aku: YouTube @mifada2543
 ```
 
@@ -46,15 +44,19 @@ Ikuti Aku: YouTube @mifada2543
 
 ### ⚙️ Backend
 
-<img height="40" src="https://skillicons.dev/icons?i=php,python,mysql,sqlite"/>
+<img height="40" src="https://skillicons.dev/icons?i=php,python,flask,mysql,sqlite"/>
 
 ### 🎨 Frontend
 
-<img height="40" src="https://skillicons.dev/icons?i=html,css,js,tailwind"/>
+<img height="40" src="https://skillicons.dev/icons?i=html,css,js,tailwind,react"/>
+
+### 🤖 AI & Data
+
+<img height="40" src="https://skillicons.dev/icons?i=tensorflow,opencv,openai"/>
 
 ### 🧰 Tools
 
-<img height="40" src="https://skillicons.dev/icons?i=github,git,vscode"/>
+<img height="40" src="https://skillicons.dev/icons?i=github,git,vscode,androidstudio"/>
 
 </div>
 
@@ -66,72 +68,80 @@ Ikuti Aku: YouTube @mifada2543
   <tr>
     <td width="50%">
       <h3><img src="./MEeL.png" width="20px" height="20px"> MEeL-HUB</h3>
-      <p>Media hub pribadi all-in-one berbasis PHP & MySQL — streaming video (HLS), musik lossless, buku digital, dan cloud drive. Dilengkapi transcoding FFmpeg, integrasi yt-dlp, serta mini-game arcade.</p>
+      <p>Platform media hub all-in-one: HLS adaptive streaming, FFmpeg transcoding, lossless music, digital library, cloud drive, admin panel, PWA, dan sistem keamanan berlapis — berbasis PHP, MySQL, HTMX & TailwindCSS.</p>
       <p>
         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
         <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
         <img src="https://img.shields.io/badge/FFmpeg-007808?style=flat-square&logo=ffmpeg&logoColor=white"/>
+        <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"/>
       </p>
       <a href="https://github.com/mifada2543/MEeL-HUB"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
     <td width="50%">
+      <h3>🎓 FlacTopus</h3>
+      <p>Platform pendidikan adaptif berbasis Skill Tree dengan AI Socratic Tutor — dibangun untuk kompetisi OSCAR 3.0 x GDGOC. React 19, ReactFlow, Gemini API, PHP 8, MySQL.</p>
+      <p>
+        <img src="https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black"/>
+        <img src="https://img.shields.io/badge/ReactFlow-FF0072?style=flat-square&logo=reactflow&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=flat-square&logo=google&logoColor=white"/>
+        <img src="https://img.shields.io/badge/PHP_8-777BB4?style=flat-square&logo=php&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/FlacTopus"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🎭 mikkan</h3>
+      <p>AI chatbot interaktif dengan karakter Live2D — menjalankan LLM lokal (Gemma GGUF) tanpa cloud, dilengkapi TTS bahasa Indonesia dan arsitektur 3-tier (Browser → PHP Proxy → Flask → MySQL).</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Live2D-FF6B9D?style=flat-square&logo=live2d&logoColor=white"/>
+        <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/mikkan"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+    <td width="50%">
+      <h3>🧠 RoKenAI</h3>
+      <p>Solusi cerdas pelaporan jalan rusak — OpenCV untuk deteksi otomatis dari foto, Logistic Regression untuk klasifikasi, NLP untuk ringkasan laporan.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+        <img src="https://img.shields.io/badge/OpenCV-5C3EEA?style=flat-square&logo=opencv&logoColor=white"/>
+        <img src="https://img.shields.io/badge/NLP-4285F4?style=flat-square&logo=google&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/RoKenAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🌐 WVGM</h3>
+      <p>WebView Gateway untuk Android dengan integrasi Gemini API — built with Android Studio & Gradle.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=flat-square&logo=google&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/WVGM"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+    <td width="50%">
       <h3>🤖 FikaAI</h3>
-      <p>Asisten AI sederhana berbasis Python dengan tampilan GUI dan penyimpanan data menggunakan SQLite.</p>
+      <p>Asisten AI offline dengan GUI & CLI — Python, SQLite, tkinter. Dibuat usia 12, dibangun usia 15.</p>
       <p>
         <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
         <img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"/>
-        <img src="https://img.shields.io/badge/GUI-412991?style=flat-square&logo=windowsterminal&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Tkinter-3776AB?style=flat-square&logo=python&logoColor=white"/>
       </p>
       <a href="https://github.com/mifada2543/FikaAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <h3>🧠 RoKenAI</h3>
-      <p>Proyek berbasis AI yang dibangun menggunakan PHP, dilengkapi dokumentasi lewat GitHub Pages.</p>
-      <p>
-        <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
-        <img src="https://img.shields.io/badge/AI_Powered-412991?style=flat-square&logo=openai&logoColor=white"/>
-      </p>
-      <a href="https://github.com/mifada2543/RoKenAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
-    </td>
-    <td width="50%">
-      <h3>🌐 WVGM</h3>
-      <p>WebView Gateway sederhana untuk kebutuhan aplikasi Android, ringan dan mudah dipakai.</p>
-      <p>
-        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white"/>
-      </p>
-      <a href="https://github.com/mifada2543/WVGM"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🎭 mikkan</h3>
-      <p>Proyek Live2D (L2D) yang dikerjakan bersama tim beranggotakan 3 orang.</p>
-      <p>
-        <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Team_Project-58A6FF?style=flat-square&logo=googlemeet&logoColor=white"/>
-      </p>
-      <a href="https://github.com/mifada2543/mikkan"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
-    </td>
-    <td width="50%">
       <h3>🗂️ MEPeL</h3>
-      <p>Proyek berbasis PHP dengan skala pengembangan yang cukup besar.</p>
+      <p>Game edukasi berbasis PHP — proyek ujian praktik kelas 10.</p>
       <p>
         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
       </p>
       <a href="https://github.com/mifada2543/MEPeL"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🧪 Web</h3>
-      <p>Kumpulan eksperimen dan proyek pengembangan web, dipublikasikan lewat GitHub Pages.</p>
-      <p>
-        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
-      </p>
-      <a href="https://github.com/mifada2543/Web"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
     <td width="50%">
     </td>
