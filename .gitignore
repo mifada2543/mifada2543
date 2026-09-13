@@ -4,6 +4,9 @@ skills-lock.json
 style.css
 script.js
 portfolio-data.js
+*.m4a
+*.mp3
+!music.mp3
 
 # build script lokal (untuk rebuild .min saja)
 build.sh

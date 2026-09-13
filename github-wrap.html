@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Wrapped 2026 — mifada2543</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --green: #3fb950;
+      --purple: #bc8cff;
+      --orange: #d29922;
+      --total: 7;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ========== PROGRESS BARS (7 segments) ========== */
+    .progress-bars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 1000;
+      display: flex;
+      gap: 4px;
+      padding: 0;
+    }
+    .progress-seg {
+      flex: 1;
+      height: 100%;
+      background: var(--border);
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-seg .seg-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      transition: none;
+    }
+    .progress-seg.done .seg-fill {
+      width: 100%;
+      transition: none;
+    }
+    .progress-seg.active .seg-fill {
+      width: 100%;
+      transition: none;
+    }
+
+    /* ========== SLIDE COUNTER ========== */
+    .slide-counter {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 1000;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== NAVIGATION DOTS ========== */
+    .nav-dots {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+    }
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .nav-dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+    .nav-dot:hover { background: var(--accent); }
+
+    /* ========== SLIDES CONTAINER ========== */
+    .slides-wrapper {
+      display: flex;
+      width: calc(var(--total) * 100vw);
+      height: 100vh;
+      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      position: relative;
+      overflow-y: auto;
+    }
+    .slide-inner {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* ========== FADE-IN ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ========== 1. HERO ========== */
+    .hero {
+      background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,0.12) 0%, transparent 60%);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .hero-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .hero .year {
+      font-size: 5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-top: 0.5rem;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 4rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ========== 2. STATS ========== */
+    .stats { text-align: center; }
+    .stats .big-number {
+      font-size: clamp(4rem, 15vw, 7rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stats .big-label {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .stat-card .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .stat-card:nth-child(2) .stat-value { color: var(--green); }
+    .stat-card:nth-child(3) .stat-value { color: var(--purple); }
+    .stat-card:nth-child(4) .stat-value { color: var(--orange); }
+    .grade-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-weight: 700;
+    }
+    .grade-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    /* ========== 3. LANGUAGES ========== */
+    .languages h2 { text-align: center; font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .languages .section-sub { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .lang-bar-wrapper { margin-bottom: 1.25rem; }
+    .lang-bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .lang-bar-header .lang-name { font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+    .lang-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .lang-bar-header .lang-pct { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; }
+    .lang-bar-track { width: 100%; height: 10px; background: var(--bg-card); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+    .lang-bar-fill { height: 100%; border-radius: 999px; width: 0%; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+    /* ========== 4. REPOS ========== */
+    .repos h2 { text-align: center; font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .repos .section-sub { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .repo-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .repo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .repo-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .repo-rank { font-size: 1.5rem; font-weight: 900; color: var(--text-muted); min-width: 2rem; text-align: center; }
+    .repo-rank.top { color: var(--accent); }
+    .repo-info { flex: 1; }
+    .repo-name { font-weight: 700; font-size: 1rem; color: var(--accent); margin-bottom: 0.1rem; }
+    .repo-desc { font-size: 0.8rem; color: var(--text-muted); display: -webkit-box; line-clamp: 1; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+    .repo-meta { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-muted); }
+    .repo-meta .stars { color: var(--orange); font-weight: 600; }
+    .repo-lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    /* ========== 5. ACHIEVEMENTS ========== */
+    .achievements { text-align: center; }
+    .achievements h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .achievements .section-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .achv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .achv-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .achv-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .achv-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .achv-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .achv-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* ========== 6. CONTRIBUTIONS ========== */
+    .contributions { text-align: center; }
+    .contributions h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .contributions .section-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .heatmap-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+    .heatmap-grid {
+      display: grid;
+      grid-template-rows: repeat(7, 1fr);
+      grid-auto-flow: column;
+      gap: 3px;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .heatmap-cell { width: 12px; height: 12px; border-radius: 2px; background: #161b22; border: 1px solid rgba(48,54,61,0.5); }
+    .heatmap-cell.l1 { background: #0e4429; }
+    .heatmap-cell.l2 { background: #006d32; }
+    .heatmap-cell.l3 { background: #26a641; }
+    .heatmap-cell.l4 { background: #39d353; }
+    .heatmap-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 0.5rem; font-size: 0.7rem; color: var(--text-muted); }
+    .heatmap-legend .heatmap-cell { border: none; }
+    .streak-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .streak-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .streak-value { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .streak-card:nth-child(2) .streak-value { color: var(--green); }
+    .streak-card:nth-child(3) .streak-value { color: var(--purple); }
+    .streak-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .streak-date { font-size: 0.65rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* ========== 7. CLOSING ========== */
+    .closing { text-align: center; }
+    .closing .quote { font-size: 1.05rem; font-style: italic; color: var(--text-muted); max-width: 420px; margin: 0 auto 0.5rem; line-height: 1.6; }
+    .closing .author { font-size: 0.85rem; color: var(--accent); margin-bottom: 2.5rem; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(88,166,255,0.3); }
+    .closing-footer { margin-top: 3rem; font-size: 0.75rem; color: var(--text-muted); }
+    .closing-footer a { color: var(--accent); text-decoration: none; }
+
+    /* ========== MUSIC TOGGLE ========== */
+    .music-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .music-toggle:hover { border-color: var(--accent); transform: scale(1.1); }
+    .music-toggle.playing { border-color: var(--accent); animation: pulse-ring 1.5s ease infinite; }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(88,166,255,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(88,166,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(88,166,255,0); }
+    }
+    .music-bars { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
+    .music-bars span { display: block; width: 3px; background: var(--accent); border-radius: 2px; height: 4px; transition: height 0.2s; }
+    .music-toggle.playing .music-bars span:nth-child(1) { animation: bar1 0.6s ease infinite alternate; }
+    .music-toggle.playing .music-bars span:nth-child(2) { animation: bar2 0.5s ease infinite alternate; }
+    .music-toggle.playing .music-bars span:nth-child(3) { animation: bar3 0.7s ease infinite alternate; }
+    .music-toggle.playing .music-bars span:nth-child(4) { animation: bar4 0.4s ease infinite alternate; }
+    @keyframes bar1 { to { height: 14px; } }
+    @keyframes bar2 { to { height: 10px; } }
+    @keyframes bar3 { to { height: 16px; } }
+    @keyframes bar4 { to { height: 8px; } }
+
+    /* ========== MUSIC POPOVER ========== */
+    .music-popover {
+      position: fixed;
+      bottom: 4.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.6rem;
+      display: flex;
+      gap: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .music-toggle:hover + .music-popover,
+    .music-popover:hover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .music-popover button {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .music-popover button:hover {
+      background: var(--bg-card);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .music-popover button.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(88,166,255,0.1);
+    }
+    .music-popover button svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ========== SPLASH SCREEN ========== */
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .splash.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 60px var(--accent-glow);
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .splash h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.3rem;
+    }
+    .splash h1 span { color: var(--accent); }
+    .splash-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    .splash-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      animation: pulse-btn 2s ease infinite;
+    }
+    @keyframes pulse-btn {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(88,166,255,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(88,166,255,0); }
+    }
+    .splash-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ========== NAV ARROWS ========== */
+    .nav-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(22,27,34,0.7);
+      backdrop-filter: blur(8px);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+    }
+    .nav-arrow:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .nav-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .nav-arrow.left { left: 1.2rem; }
+    .nav-arrow.right { right: 1.2rem; }
+    .nav-arrow.hidden { opacity: 0; pointer-events: none; }
+    .nav-arrow svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 480px) {
+      .slide { padding: 2.5rem 1.25rem; }
+      .stats-grid { gap: 0.75rem; }
+      .stat-card { padding: 1rem; }
+      .stat-card .stat-value { font-size: 1.6rem; }
+      .achv-grid { gap: 0.75rem; }
+      .streak-grid { grid-template-columns: 1fr; }
+      .repo-card { padding: 0.8rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div class="splash" id="splash">
+    <img src="https://avatars.githubusercontent.com/u/137960929?v=4" alt="avatar" class="splash-avatar">
+    <h1><span>mifada2543</span>'s</h1>
+    <p class="splash-sub">GitHub Wrapped 2026</p>
+    <button class="splash-btn" id="splashBtn">
+      <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm2.5 8.5l-4.5 3V5.5l4.5 3z"/></svg>
+      Putar Sekarang
+    </button>
+  </div>
+
+  <!-- ===== PROGRESS BARS ===== -->
+  <div class="progress-bars" id="progressBars">
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+    <div class="progress-seg"><div class="seg-fill"></div></div>
+  </div>
+  <div class="slide-counter"><span id="slideCurrent">1</span> / 7</div>
+
+  <!-- ===== SLIDES ===== -->
+  <div class="slides-wrapper" id="slidesWrapper">
+
+    <!-- 1. HERO -->
+    <div class="slide hero">
+      <div class="slide-inner reveal">
+        <div class="hero-badge">GitHub Wrapped</div>
+        <img src="https://avatars.githubusercontent.com/u/137960929?v=4" alt="avatar" class="hero-avatar">
+        <p class="subtitle">Pelajar · Web Developer · AI Enthusiast</p>
+        <h1><span>mifada2543</span>'s Year</h1>
+        <div class="year">2026</div>
+      </div>
+      <div class="scroll-hint">→ scroll / swipe untuk lanjut</div>
+    </div>
+
+    <!-- 2. STATS -->
+    <div class="slide stats">
+      <div class="slide-inner reveal">
+        <div class="big-number" data-target="1218">0</div>
+        <div class="big-label">total contributions sejak Jun 2023</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-value" data-target="974">0</div><div class="stat-label">Commits (last year)</div></div>
+          <div class="stat-card"><div class="stat-value" data-target="114">0</div><div class="stat-label">Pull Requests</div></div>
+          <div class="stat-card"><div class="stat-value" data-target="18">0</div><div class="stat-label">Issues Opened</div></div>
+          <div class="stat-card"><div class="stat-value" data-target="9">0</div><div class="stat-label">Stars Earned</div></div>
+        </div>
+        <div class="grade-badge"><div class="grade-circle">B</div><span>GitHub Profile Grade</span></div>
+      </div>
+    </div>
+
+    <!-- 3. LANGUAGES -->
+    <div class="slide languages">
+      <div class="slide-inner reveal">
+        <h2>Most Used Languages</h2>
+        <p class="section-sub">Bahasa yang paling sering kamu pakai tahun ini</p>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#e34c26"></span> HTML</span><span class="lang-pct">57.00%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="57" style="background:#e34c26"></div></div></div>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#4F5D95"></span> PHP</span><span class="lang-pct">24.23%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="24.23" style="background:#4F5D95"></div></div></div>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#563d7c"></span> CSS</span><span class="lang-pct">8.07%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="8.07" style="background:#563d7c"></div></div></div>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#f1e05a"></span> JavaScript</span><span class="lang-pct">7.82%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="7.82" style="background:#f1e05a"></div></div></div>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#3572A5"></span> Python</span><span class="lang-pct">2.11%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="2.11" style="background:#3572A5"></div></div></div>
+        <div class="lang-bar-wrapper"><div class="lang-bar-header"><span class="lang-name"><span class="lang-dot" style="background:#A97BFF"></span> Kotlin</span><span class="lang-pct">0.76%</span></div><div class="lang-bar-track"><div class="lang-bar-fill" data-width="0.76" style="background:#A97BFF"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 4. REPOS -->
+    <div class="slide repos">
+      <div class="slide-inner reveal">
+        <h2>Top Repositories</h2>
+        <p class="section-sub">Proyek yang paling banyak dapat perhatian</p>
+        <div class="repo-list">
+          <a href="https://github.com/mifada2543/MEeL-HUB" target="_blank" class="repo-card"><div class="repo-rank top">1</div><div class="repo-info"><div class="repo-name">MEeL-HUB</div><div class="repo-desc">All-in-one media hub — streaming, musik, buku, cloud</div><div class="repo-meta"><span class="stars">★ 3</span><span><span class="repo-lang-dot" style="background:#4F5D95"></span> PHP</span><span>20 topics</span></div></div></a>
+          <a href="https://github.com/mifada2543/mifada2543" target="_blank" class="repo-card"><div class="repo-rank top">2</div><div class="repo-info"><div class="repo-name">mifada2543</div><div class="repo-desc">Portfolio / About Me — GitHub Pages</div><div class="repo-meta"><span class="stars">★ 1</span><span><span class="repo-lang-dot" style="background:#e34c26"></span> HTML</span></div></div></a>
+          <a href="https://github.com/mifada2543/mikkan" target="_blank" class="repo-card"><div class="repo-rank">3</div><div class="repo-info"><div class="repo-name">mikkan</div><div class="repo-desc">L2D Project by 3 members</div><div class="repo-meta"><span class="stars">★ 1</span><span><span class="repo-lang-dot" style="background:#563d7c"></span> CSS</span></div></div></a>
+          <a href="https://github.com/mifada2543/RoKenAI" target="_blank" class="repo-card"><div class="repo-rank">4</div><div class="repo-info"><div class="repo-name">RoKenAI</div><div class="repo-desc">AI</div><div class="repo-meta"><span class="stars">★ 1</span><span><span class="repo-lang-dot" style="background:#4F5D95"></span> PHP</span></div></div></a>
+          <a href="https://github.com/mifada2543/WVGM" target="_blank" class="repo-card"><div class="repo-rank">5</div><div class="repo-info"><div class="repo-name">WVGM</div><div class="repo-desc">A simple WebView Gateway — Android APK</div><div class="repo-meta"><span class="stars">★ 1</span><span><span class="repo-lang-dot" style="background:#e34c26"></span> HTML</span></div></div></a>
+          <a href="https://github.com/mifada2543/FikaAI" target="_blank" class="repo-card"><div class="repo-rank">6</div><div class="repo-info"><div class="repo-name">FikaAI</div><div class="repo-desc">Asisten AI Python sederhana dengan GUI dan SQLite</div><div class="repo-meta"><span class="stars">★ 1</span><span><span class="repo-lang-dot" style="background:#3572A5"></span> Python</span></div></div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ACHIEVEMENTS -->
+    <div class="slide achievements">
+      <div class="slide-inner reveal">
+        <h2>Achievements</h2>
+        <p class="section-sub">Badge yang berhasil dikumpulkan dari kontribusi & kebiasaan ngoding</p>
+        <div class="achv-grid">
+          <div class="achv-card"><div class="achv-icon">🦈</div><div class="achv-name">Pull Shark</div><div class="achv-desc">2+ PR yang di-merge — kamu punya 114 PRs!</div></div>
+          <div class="achv-card"><div class="achv-icon">🤠</div><div class="achv-name">YOLO</div><div class="achv-desc">Merge pull request tanpa code review</div></div>
+          <div class="achv-card"><div class="achv-icon">🔫</div><div class="achv-name">Quickdraw</div><div class="achv-desc">Close issue/PR dalam 5 menit setelah dibuka</div></div>
+          <div class="achv-card"><div class="achv-icon">👥</div><div class="achv-name">Pair Extraordinaire</div><div class="achv-desc">Co-author commit di PR yang di-merge</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. CONTRIBUTIONS -->
+    <div class="slide contributions">
+      <div class="slide-inner reveal">
+        <h2>Contribution Activity</h2>
+        <p class="section-sub">Sepanjang tahun 2026</p>
+        <div class="heatmap-container">
+          <div class="heatmap-grid" id="heatmap"></div>
+          <div class="heatmap-legend"><span>Less</span><div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l4"></div><span>More</span></div>
+        </div>
+        <div class="streak-grid">
+          <div class="streak-card"><div class="streak-value" data-target="1218">0</div><div class="streak-label">Total Contributions</div><div class="streak-date">Jun 27, 2023 — Present</div></div>
+          <div class="streak-card"><div class="streak-value" data-target="12">0</div><div class="streak-label">Current Streak</div><div class="streak-date">Sep 2 — Sep 13</div></div>
+          <div class="streak-card"><div class="streak-value" data-target="16">0</div><div class="streak-label">Longest Streak</div><div class="streak-date">Jul 19 — Aug 3</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. CLOSING -->
+    <div class="slide closing">
+      <div class="slide-inner reveal">
+        <p class="quote">"The butterfly effect — terkadang suatu hal kecil yang menurutmu kecil dapat membuat hidupmu jauh lebih baik ataupun lebih buruk. Tentukanlah pilihanmu dari sekarang."</p>
+        <p class="author">— Muhammad Daffa</p>
+        <a href="https://github.com/mifada2543" target="_blank" class="cta-btn">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Visit GitHub Profile
+        </a>
+        <div class="closing-footer">Dibangun sambil belajar, satu commit pada satu waktu.<br>&copy; 2026 <a href="https://github.com/mifada2543" target="_blank">mifada2543</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== NAV DOTS ===== -->
+  <div class="nav-dots" id="navDots">
+    <button class="nav-dot active" data-index="0"></button>
+    <button class="nav-dot" data-index="1"></button>
+    <button class="nav-dot" data-index="2"></button>
+    <button class="nav-dot" data-index="3"></button>
+    <button class="nav-dot" data-index="4"></button>
+    <button class="nav-dot" data-index="5"></button>
+    <button class="nav-dot" data-index="6"></button>
+  </div>
+
+  <!-- ===== NAV ARROWS ===== -->
+  <button class="nav-arrow left hidden" id="navPrev" aria-label="Previous slide">
+    <svg viewBox="0 0 16 16"><path d="M10.3 13.3a1 1 0 01-1.4 0l-4-4a1 1 0 010-1.4l4-4a1 1 0 111.4 1.4L6.4 8l3.9 3.9a1 1 0 010 1.4z"/></svg>
+  </button>
+  <button class="nav-arrow right" id="navNext" aria-label="Next slide">
+    <svg viewBox="0 0 16 16"><path d="M5.7 2.7a1 1 0 011.4 0l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4-1.4L9.6 8 5.7 4.1a1 1 0 010-1.4z"/></svg>
+  </button>
+
+  <!-- ===== BG MUSIC ===== -->
+  <audio id="bgMusic" loop autoplay><source src="music.mp3" type="audio/mpeg"></audio>
+  <button class="music-toggle" id="musicBtn" aria-label="Toggle music"><div class="music-bars"><span></span><span></span><span></span><span></span></div></button>
+  <div class="music-popover" id="musicPopover">
+    <button id="btnPlayPause" title="Play / Pause">
+      <svg id="iconPlay" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>
+      <svg id="iconPause" viewBox="0 0 16 16" style="display:none"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg>
+    </button>
+    <button id="btnMute" title="Mute / Unmute">
+      <svg id="iconSound" viewBox="0 0 16 16"><path d="M3 5h2.5L9 2v12L5.5 11H3a1 1 0 01-1-1V6a1 1 0 011-1zm7.5-.5a5 5 0 010 7m1.5-9a8 8 0 010 11"/></svg>
+      <svg id="iconMuted" viewBox="0 0 16 16" style="display:none"><path d="M3 5h2.5L9 2v12L5.5 11H3a1 1 0 01-1-1V6a1 1 0 011-1zm9.5-1.5L7 7.5v1l5.5 4.5 1.5-2a7 7 0 000-9z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // ===== SLIDE SYSTEM =====
+    const wrapper = document.getElementById('slidesWrapper');
+    const dots = document.querySelectorAll('.nav-dot');
+    const segs = document.querySelectorAll('.progress-seg');
+    const slideCurrent = document.getElementById('slideCurrent');
+    const totalSlides = 7;
+    const AUTO_MS = 5000;
+    let current = 0;
+    let isAnimating = false;
+    let autoTimer = null;
+    let started = false;
+
+    function updateProgress() {
+      segs.forEach((seg, i) => {
+        seg.classList.remove('done', 'active');
+        const fill = seg.querySelector('.seg-fill');
+        if (i < current) {
+          seg.classList.add('done');
+          fill.style.width = '100%';
+          fill.style.transition = 'none';
+        } else if (i === current) {
+          seg.classList.add('active');
+          fill.style.transition = 'none';
+          fill.style.width = '0%';
+          fill.offsetWidth;
+          fill.style.transition = `width ${AUTO_MS}ms linear`;
+          fill.style.width = '100%';
+        } else {
+          fill.style.transition = 'none';
+          fill.style.width = '0%';
+        }
+      });
+    }
+
+    function goTo(index) {
+      if (!started || isAnimating || index < 0 || index >= totalSlides || index === current) return;
+      isAnimating = true;
+      current = index;
+      wrapper.style.transform = `translateX(-${current * 100}vw)`;
+      slideCurrent.textContent = current + 1;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      updateProgress();
+      updateArrows();
+      setTimeout(() => {
+        isAnimating = false;
+        revealCurrentSlide();
+        triggerAnimations();
+      }, 650);
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // ===== NAV ARROWS =====
+    const navPrev = document.getElementById('navPrev');
+    const navNext = document.getElementById('navNext');
+    navPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
+    navNext.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
+
+    function updateArrows() {
+      navPrev.classList.toggle('hidden', current === 0);
+      navNext.classList.toggle('hidden', current === totalSlides - 1);
+    }
+
+    // ===== NAV DOTS =====
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); resetAuto(); }));
+
+    // ===== WHEEL / TRACKPAD → HORIZONTAL =====
+    let wheelAccum = 0;
+    const wheelThreshold = 50;
+    let wheelTimer;
+
+    document.addEventListener('wheel', (e) => {
+      if (!started) return;
+      e.preventDefault();
+      wheelAccum += e.deltaY;
+      clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(() => { wheelAccum = 0; }, 200);
+      if (Math.abs(wheelAccum) >= wheelThreshold) {
+        if (wheelAccum > 0) next();
+        wheelAccum = 0;
+      }
+    }, { passive: false });
+
+    // ===== KEYBOARD ARROWS =====
+    document.addEventListener('keydown', (e) => {
+      if (!started) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); next(); }
+    });
+
+    // ===== TOUCH SWIPE =====
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      if (!started) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50 && dx < 0) next();
+    }, { passive: true });
+
+    // ===== AUTO-ADVANCE (5 detik) =====
+    function resetAuto() {
+      clearInterval(autoTimer);
+      updateProgress();
+      autoTimer = setInterval(() => {
+        if (current < totalSlides - 1) next();
+      }, AUTO_MS);
+    }
+
+    ['wheel', 'keydown', 'touchstart', 'click'].forEach(evt =>
+      document.addEventListener(evt, () => { if (started) resetAuto(); }, { passive: true })
+    );
+
+    // ===== REVEAL ANIMATIONS =====
+    function revealCurrentSlide() {
+      const slide = document.querySelectorAll('.slide')[current];
+      slide.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounters() {
+      const slide = document.querySelectorAll('.slide')[current];
+      slide.querySelectorAll('[data-target]').forEach(el => {
+        if (el.dataset.animated) return;
+        const target = +el.dataset.target;
+        const duration = 1500;
+        const start = performance.now();
+        el.dataset.animated = '1';
+        const tick = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(target * ease).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        };
+        requestAnimationFrame(tick);
+      });
+    }
+
+    // ===== LANGUAGE BAR ANIMATION =====
+    function animateLangBars() {
+      const slide = document.querySelectorAll('.slide')[current];
+      slide.querySelectorAll('.lang-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+    }
+
+    // ===== TRIGGER ANIMATIONS PER SLIDE =====
+    function triggerAnimations() {
+      if (current === 1 || current === 5) animateCounters();
+      if (current === 2) animateLangBars();
+    }
+
+    // ===== HEATMAP =====
+    const contribLevels = [
+      0,0,0,1,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,4,0, 0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,2,0,0, 0,0,0,0,0,0,0,
+      0,0,2,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0,
+      0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,7,0,0,0,0,0,
+      0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,10,0,0,0, 1,0,
+      0,0,8,0,0,1,0, 0,0,0,0,0,2,0, 5,0,0,0,19,0,0, 0,10,0,10,0,0,0, 1,0,
+      2,11,0,3,0,8,11, 3,12,1,3,0,0,14, 6,13,0,14,7,9,7, 8,0,0,0,0,0,0,
+      6,0,0,3,0,17,21, 11,3,6,4,17,0,27, 18,14,5,18,10,34,0, 27,14,13,0,0,0,0,
+      17,8,0,6,0,2,15, 0,29,12,17,23,9,2, 1,3,0,15,17,8,5, 2,13,19,10,0,0,0,
+      4,0,0,6,2,23,4, 10,35,12,0,0,0,0
+    ];
+    const grid = document.getElementById('heatmap');
+    while (contribLevels.length < 364) contribLevels.push(0);
+    contribLevels.forEach(c => {
+      const cell = document.createElement('div');
+      cell.className = 'heatmap-cell';
+      if (c >= 15) cell.classList.add('l4');
+      else if (c >= 8) cell.classList.add('l3');
+      else if (c >= 3) cell.classList.add('l2');
+      else if (c >= 1) cell.classList.add('l1');
+      cell.title = c + ' contributions';
+      grid.appendChild(cell);
+    });
+
+    // ===== MUSIC TOGGLE =====
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const btnPlayPause = document.getElementById('btnPlayPause');
+    const btnMute = document.getElementById('btnMute');
+    const iconPlay = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
+    const iconSound = document.getElementById('iconSound');
+    const iconMuted = document.getElementById('iconMuted');
+    let playing = false;
+    let muted = false;
+
+    function updateMusicUI() {
+      iconPlay.style.display = playing ? 'none' : 'block';
+      iconPause.style.display = playing ? 'block' : 'none';
+      iconSound.style.display = muted ? 'none' : 'block';
+      iconMuted.style.display = muted ? 'block' : 'none';
+      musicBtn.classList.toggle('playing', playing);
+      btnPlayPause.classList.toggle('active', playing);
+      btnMute.classList.toggle('active', muted);
+    }
+
+    btnPlayPause.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (playing) { music.pause(); playing = false; }
+      else { music.volume = 0.3; music.play().then(() => { playing = true; }).catch(() => {}); }
+      updateMusicUI();
+    });
+
+    btnMute.addEventListener('click', (e) => {
+      e.stopPropagation();
+      muted = !muted;
+      music.muted = muted;
+      updateMusicUI();
+    });
+
+    musicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (playing) { music.pause(); playing = false; }
+      else { music.volume = 0.3; music.play().then(() => { playing = true; }).catch(() => {}); }
+      updateMusicUI();
+    });
+
+    // ===== INIT =====
+    const splash = document.getElementById('splash');
+    const splashBtn = document.getElementById('splashBtn');
+
+    function startExperience() {
+      if (started) return;
+      started = true;
+      splash.classList.add('hidden');
+      music.volume = 0.3;
+      music.play().then(() => {
+        playing = true;
+        updateMusicUI();
+      }).catch(() => {});
+      resetAuto();
+      updateArrows();
+      revealCurrentSlide();
+    }
+
+    splashBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startExperience();
+    });
+    splash.addEventListener('click', startExperience);
+  </script>
+
+</body>
+</html>
