@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="MEeL.png" type="image/png">
   <title>GitHub Wrapped 2026 — mifada2543</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -466,6 +467,7 @@
       background: rgba(88,166,255,0.1);
     }
     .music-popover button svg { width: 16px; height: 16px; fill: currentColor; }
+    .music-popover button svg.hidden { display: none; }
 
     /* ========== SPLASH SCREEN ========== */
     .splash {
@@ -528,6 +530,17 @@
       50% { box-shadow: 0 0 0 12px rgba(88,166,255,0); }
     }
     .splash-btn svg { width: 20px; height: 20px; fill: currentColor; }
+    .splash-btn .play-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .splash-btn .play-circle svg { width: 14px; height: 14px; fill: var(--bg); }
 
     /* ========== NAV ARROWS ========== */
     .nav-arrow {
@@ -578,7 +591,7 @@
     <h1><span>mifada2543</span>'s</h1>
     <p class="splash-sub">GitHub Wrapped 2026</p>
     <button class="splash-btn" id="splashBtn">
-      <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm2.5 8.5l-4.5 3V5.5l4.5 3z"/></svg>
+      <span class="play-circle"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></span>
       Putar Sekarang
     </button>
   </div>
@@ -721,16 +734,16 @@
   </button>
 
   <!-- ===== BG MUSIC ===== -->
-  <audio id="bgMusic" loop autoplay><source src="music.mp3" type="audio/mpeg"></audio>
-  <button class="music-toggle" id="musicBtn" aria-label="Toggle music"><div class="music-bars"><span></span><span></span><span></span><span></span></div></button>
+  <audio id="bgMusic" loop preload="auto"><source src="music.mp3" type="audio/mpeg"></audio>
+  <button class="music-toggle" id="musicBtn" aria-label="Music"><div class="music-bars"><span></span><span></span><span></span><span></span></div></button>
   <div class="music-popover" id="musicPopover">
     <button id="btnPlayPause" title="Play / Pause">
       <svg id="iconPlay" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>
-      <svg id="iconPause" viewBox="0 0 16 16" style="display:none"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg>
+      <svg id="iconPause" class="hidden" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="0.5"/><rect x="9.5" y="2" width="3.5" height="12" rx="0.5"/></svg>
     </button>
     <button id="btnMute" title="Mute / Unmute">
-      <svg id="iconSound" viewBox="0 0 16 16"><path d="M3 5h2.5L9 2v12L5.5 11H3a1 1 0 01-1-1V6a1 1 0 011-1zm7.5-.5a5 5 0 010 7m1.5-9a8 8 0 010 11"/></svg>
-      <svg id="iconMuted" viewBox="0 0 16 16" style="display:none"><path d="M3 5h2.5L9 2v12L5.5 11H3a1 1 0 01-1-1V6a1 1 0 011-1zm9.5-1.5L7 7.5v1l5.5 4.5 1.5-2a7 7 0 000-9z"/></svg>
+      <svg id="iconSound" viewBox="0 0 16 16"><path d="M2 5.5h2.2L7.5 2.5v11L4.2 10.5H2a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5z"/><path d="M10 5a3.5 3.5 0 010 6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M11.5 3a6 6 0 010 10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <svg id="iconMuted" class="hidden" viewBox="0 0 16 16"><path d="M2 5.5h2.2L7.5 2.5v11L4.2 10.5H2a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5z"/><line x1="10" y1="5.5" x2="14" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="5.5" x2="10" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
   </div>
 
@@ -929,10 +942,10 @@
     let muted = false;
 
     function updateMusicUI() {
-      iconPlay.style.display = playing ? 'none' : 'block';
-      iconPause.style.display = playing ? 'block' : 'none';
-      iconSound.style.display = muted ? 'none' : 'block';
-      iconMuted.style.display = muted ? 'block' : 'none';
+      iconPlay.classList.toggle('hidden', playing);
+      iconPause.classList.toggle('hidden', !playing);
+      iconSound.classList.toggle('hidden', muted);
+      iconMuted.classList.toggle('hidden', !muted);
       musicBtn.classList.toggle('playing', playing);
       btnPlayPause.classList.toggle('active', playing);
       btnMute.classList.toggle('active', muted);
@@ -940,8 +953,16 @@
 
     btnPlayPause.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (playing) { music.pause(); playing = false; }
-      else { music.volume = 0.3; music.play().then(() => { playing = true; }).catch(() => {}); }
+      if (playing) {
+        music.pause();
+        playing = false;
+      } else {
+        music.volume = 0.3;
+        music.play().then(() => {
+          playing = true;
+          updateMusicUI();
+        }).catch(() => {});
+      }
       updateMusicUI();
     });
 
@@ -954,9 +975,6 @@
 
     musicBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (playing) { music.pause(); playing = false; }
-      else { music.volume = 0.3; music.play().then(() => { playing = true; }).catch(() => {}); }
-      updateMusicUI();
     });
 
     // ===== INIT =====
