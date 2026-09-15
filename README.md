@@ -3,8 +3,8 @@
 
 <br/>
 
-<a href="https://meel.my.id">
-  <img src="https://img.shields.io/badge/Website-meel.my.id-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=white" />
+<a href="https://mifada2543.github.io/mifada2543">
+  <img src="https://img.shields.io/badge/Website-mifada2543-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=white" />
 </a>
 <a href="https://www.youtube.com/@mifada2543">
   <img src="https://img.shields.io/badge/YouTube-@mifada2543-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
