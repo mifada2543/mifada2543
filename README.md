@@ -78,6 +78,19 @@ Ikuti Aku: YouTube @mifada2543
       <a href="https://github.com/mifada2543/MEeL-HUB"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
     <td width="50%">
+      <h3>🪐 SolarSystem</h3>
+      <p>Simulasi tata surya 3D interaktif di peramban — orbit Kepler dari elemen JPL epoch J2000, renderer WebGPU, dan 100% offline tanpa build step.</p>
+      <p>
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+        <img src="https://img.shields.io/badge/three.js-000000?style=flat-square&logo=threedotjs&logoColor=white"/>
+        <img src="https://img.shields.io/badge/WebGPU-005A9C?style=flat-square&logo=webgpu&logoColor=white"/>
+        <img src="https://img.shields.io/badge/GPL--3.0-blue?style=flat-square"/>
+      </p>
+      <a href="https://github.com/mifada2543/SolarSystem"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
       <h3>🎓 FlacTopus</h3>
       <p>Platform pendidikan adaptif berbasis Skill Tree dengan AI Socratic Tutor — dibangun untuk kompetisi OSCAR 3.0 x GDGOC. React 19, ReactFlow, Gemini API, PHP 8, MySQL.</p>
       <p>
@@ -88,8 +101,6 @@ Ikuti Aku: YouTube @mifada2543
       </p>
       <a href="https://github.com/mifada2543/FlacTopus"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
-  </tr>
-  <tr>
     <td width="50%">
       <h3>🎭 mikkan</h3>
       <p>AI chatbot interaktif dengan karakter Live2D — menjalankan LLM lokal (Gemma GGUF) tanpa cloud, dilengkapi TTS bahasa Indonesia dan arsitektur 3-tier (Browser → PHP Proxy → Flask → MySQL).</p>
@@ -101,6 +112,8 @@ Ikuti Aku: YouTube @mifada2543
       </p>
       <a href="https://github.com/mifada2543/mikkan"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
+  </tr>
+  <tr>
     <td width="50%">
       <h3>🧠 RoKenAI</h3>
       <p>Solusi cerdas pelaporan jalan rusak — OpenCV untuk deteksi otomatis dari foto, Logistic Regression untuk klasifikasi, NLP untuk ringkasan laporan.</p>
@@ -111,8 +124,6 @@ Ikuti Aku: YouTube @mifada2543
       </p>
       <a href="https://github.com/mifada2543/RoKenAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
-  </tr>
-  <tr>
     <td width="50%">
       <h3>🌐 WVGM</h3>
       <p>WebView Gateway untuk Android dengan integrasi Gemini API — built with Android Studio & Gradle.</p>
@@ -123,6 +134,8 @@ Ikuti Aku: YouTube @mifada2543
       </p>
       <a href="https://github.com/mifada2543/WVGM"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
+  </tr>
+  <tr>
     <td width="50%">
       <h3>🤖 FikaAI</h3>
       <p>Asisten AI offline dengan GUI & CLI — Python, SQLite, tkinter. Dibuat usia 12, dibangun usia 15.</p>
@@ -133,8 +146,6 @@ Ikuti Aku: YouTube @mifada2543
       </p>
       <a href="https://github.com/mifada2543/FikaAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
-  </tr>
-  <tr>
     <td width="50%">
       <h3>🗂️ MEPeL</h3>
       <p>Game edukasi berbasis PHP — proyek ujian praktik kelas 10.</p>
@@ -142,6 +153,16 @@ Ikuti Aku: YouTube @mifada2543
         <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
       </p>
       <a href="https://github.com/mifada2543/MEPeL"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🌐 Web</h3>
+      <p>Repo eksperimen web lama — proyek HTML paling awal yang pernah dibuat.</p>
+      <p>
+        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/Web"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
     <td width="50%">
     </td>
@@ -156,7 +177,7 @@ Ikuti Aku: YouTube @mifada2543
 
 <div align="center">
 
-<img src="https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png" height="80" alt="Pull Shark x2"/>
+<img src="https://github.githubassets.com/assets/pull-shark-silver-0643f87ac9fd.png" height="80" alt="Pull Shark x3"/>
 <img src="https://github.githubassets.com/assets/pair-extraordinaire-default-579438a20e01.png" height="80" alt="Pair Extraordinaire"/>
 <img src="https://github.githubassets.com/assets/yolo-default-be0bbff04951.png" height="80" alt="YOLO"/>
 <img src="https://github.githubassets.com/assets/quickdraw-default-39c6aec8ff89.png" height="80" alt="Quickdraw"/>
