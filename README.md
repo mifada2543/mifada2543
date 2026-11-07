@@ -91,17 +91,6 @@ Ikuti Aku: YouTube @mifada2543
   </tr>
   <tr>
     <td width="50%">
-      <h3>🎓 FlacTopus</h3>
-      <p>Platform pendidikan adaptif berbasis Skill Tree dengan AI Socratic Tutor — dibangun untuk kompetisi OSCAR 3.0 x GDGOC. React 19, ReactFlow, Gemini API, PHP 8, MySQL.</p>
-      <p>
-        <img src="https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black"/>
-        <img src="https://img.shields.io/badge/ReactFlow-FF0072?style=flat-square&logo=reactflow&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=flat-square&logo=google&logoColor=white"/>
-        <img src="https://img.shields.io/badge/PHP_8-777BB4?style=flat-square&logo=php&logoColor=white"/>
-      </p>
-      <a href="https://github.com/mifada2543/FlacTopus"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
-    </td>
-    <td width="50%">
       <h3>🎭 mikkan</h3>
       <p>AI chatbot interaktif dengan karakter Live2D — menjalankan LLM lokal (Gemma GGUF) tanpa cloud, dilengkapi TTS bahasa Indonesia dan arsitektur 3-tier (Browser → PHP Proxy → Flask → MySQL).</p>
       <p>
@@ -111,6 +100,38 @@ Ikuti Aku: YouTube @mifada2543
         <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
       </p>
       <a href="https://github.com/mifada2543/mikkan"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+    <td width="50%">
+      <h3>🔒 MeInsert</h3>
+      <p>Editor metadata lokal 100% di browser — baca & tulis metadata gambar, PDF, audio, dan video langsung di perangkat tanpa server, tanpa upload, tanpa akun. WebAssembly + Web Workers, jalan offline sebagai PWA.</p>
+      <p>
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+        <img src="https://img.shields.io/badge/WASM-654FF0?style=flat-square&logo=webassembly&logoColor=white"/>
+        <img src="https://img.shields.io/badge/PWA-5A0FC8?style=flat-square&logo=pwa&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/MeInsert"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>📋 MEeLData</h3>
+      <p>Aplikasi web internal untuk mencatat, memberikan, memantau, dan mengekspor tugas trainee — Laravel 12, PHP 8.3, Blade, Tailwind CSS 4, Alpine.js. Dua role Admin & Trainee dengan import/export Excel dan scheduler terlambat otomatis.</p>
+      <p>
+        <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white"/>
+        <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/MEeLData"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+    </td>
+    <td width="50%">
+      <h3>🌐 WVGM</h3>
+      <p>WebView Gateway untuk Android dengan integrasi Gemini API — built with Android Studio & Gradle.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=flat-square&logo=google&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
+      </p>
+      <a href="https://github.com/mifada2543/WVGM"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
   </tr>
   <tr>
@@ -125,14 +146,15 @@ Ikuti Aku: YouTube @mifada2543
       <a href="https://github.com/mifada2543/RoKenAI"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
     <td width="50%">
-      <h3>🌐 WVGM</h3>
-      <p>WebView Gateway untuk Android dengan integrasi Gemini API — built with Android Studio & Gradle.</p>
+      <h3>🎓 FlacTopus</h3>
+      <p>Platform pendidikan adaptif berbasis Skill Tree dengan AI Socratic Tutor — dibangun untuk kompetisi OSCAR 3.0 x GDGOC. React 19, ReactFlow, Gemini API, PHP 8, MySQL.</p>
       <p>
-        <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white"/>
+        <img src="https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black"/>
+        <img src="https://img.shields.io/badge/ReactFlow-FF0072?style=flat-square&logo=reactflow&logoColor=white"/>
         <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=flat-square&logo=google&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white"/>
+        <img src="https://img.shields.io/badge/PHP_8-777BB4?style=flat-square&logo=php&logoColor=white"/>
       </p>
-      <a href="https://github.com/mifada2543/WVGM"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
+      <a href="https://github.com/mifada2543/FlacTopus"><img src="https://img.shields.io/badge/Lihat%20Proyek-58A6FF?style=for-the-badge&logo=github&logoColor=white"/></a>
     </td>
   </tr>
   <tr>
